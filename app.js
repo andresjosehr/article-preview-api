@@ -5,14 +5,16 @@ const conn       = require("./conn")
 const apiRoutes  = require("./routes/api")
 
 
-app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api", apiRoutes)
 
-app.get("/", (req, resp) =>{
-    
-    resp.status(202)
-    resp.send("working")
+app.post("/",(req, resp) =>{
+
+
+    resp.status(200)
+    resp.send("Works")
+
 })
 
 

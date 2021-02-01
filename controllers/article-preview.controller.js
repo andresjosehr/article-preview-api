@@ -10,18 +10,20 @@ const ArticlePreviewController = {
 
     async store(req, res){    
 
-        const data = req.body
+        const values = {
+                    title: req.body.title,
+                    preview_content: req.body.preview_content,
+                    autor: req.body.autor,
+                    date: req.body.date,
+                    image: req.files.filter(image => image.fieldname == "image")[0].filename,
+                    autor_photo: req.files.filter(image => image.fieldname == "autor_photo")[0].filename,
+                }
 
-        const newArticlePreview = new ArticlePreview({
-            title: data.title,
-            preview_content: data.preview_content,
-            autor: data.autor,
-            date: data.date
-        });
+        const newArticlePreview = new ArticlePreview(values);
         const created = await newArticlePreview.save();
 
         res.status(201);
-        res.json({message: "Created Sucefully"})
+        res.json({message: "Created Sucefully", response: created});
         
     },
 
