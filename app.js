@@ -8,6 +8,7 @@ const apiRoutes  = require("./routes/api")
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api", apiRoutes)
+app.use("/images",express.static('public/images'));
 
 app.post("/",(req, resp) =>{
 
